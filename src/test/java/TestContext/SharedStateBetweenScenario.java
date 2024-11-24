@@ -1,9 +1,9 @@
-package Steps;
+package TestContext;
 
 import lombok.Data;
 
 @Data
 public class SharedStateBetweenScenario {
-    static String dataBetweenScenarrio;
+    public static String dataBetweenScenarrio;
 }
 
