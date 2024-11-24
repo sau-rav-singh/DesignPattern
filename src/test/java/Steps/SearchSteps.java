@@ -1,11 +1,10 @@
 package Steps;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class SearchSteps {
 
@@ -13,7 +12,7 @@ public class SearchSteps {
 
     @Given("I am on {string} homepage")
     public void openHomepage(String searchEngine) {
-        driver = new ChromeDriver();
+        driver=WebDriverManager.getInstance("chrome").getDriver();
         driver.manage().window().maximize();
         if (searchEngine.equalsIgnoreCase("Google")) {
             driver.get("https://www.google.com/");
@@ -34,7 +33,7 @@ public class SearchSteps {
     @Then("the title should be {string}")
     public void verifyTitle(String expectedTitle) {
         Assert.assertEquals(driver.getTitle(), expectedTitle);
-        driver.quit();
+        WebDriverManager.quitBrowser();
     }
 
 

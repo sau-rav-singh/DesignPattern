@@ -1,3 +1,4 @@
+@Parallel
 Feature: Search Engine Titles
 
   Scenario: Open Google and Print Title
