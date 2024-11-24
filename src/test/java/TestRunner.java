@@ -4,11 +4,12 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/java/",
-        glue = "Steps"
+        glue = "Steps",
+        tags = "@DI"
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
     @Override
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] scenarios() {
         return super.scenarios();
     }
