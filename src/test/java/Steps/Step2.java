@@ -9,9 +9,8 @@ import static org.testng.Assert.assertEquals;
 public class Step2 {
     private final SharedStateBetweenSteps sharedStateBetweenSteps;
 
-    public Step2(SharedStateBetweenScenario sharedStateBetweenScenario, SharedStateBetweenSteps sharedStateBetweenSteps) {
+    public Step2(SharedStateBetweenSteps sharedStateBetweenSteps) {
         this.sharedStateBetweenSteps = sharedStateBetweenSteps;
-
     }
 
     @Then("I should have access to the important data in step definition 2")

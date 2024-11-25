@@ -7,7 +7,7 @@ import io.cucumber.java.en.Given;
 public class Step1 {
     private final SharedStateBetweenSteps sharedStateBetweenSteps;
 
-    public Step1(SharedStateBetweenScenario sharedStateBetweenScenario, SharedStateBetweenSteps sharedStateBetweenSteps) {
+    public Step1(SharedStateBetweenSteps sharedStateBetweenSteps) {
         this.sharedStateBetweenSteps = sharedStateBetweenSteps;
     }
 
