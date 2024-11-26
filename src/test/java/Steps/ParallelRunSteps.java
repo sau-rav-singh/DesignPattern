@@ -1,18 +1,18 @@
 package Steps;
 
+import Utils.WebDriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
-public class SearchSteps {
+public class ParallelRunSteps {
 
     WebDriver driver;
 
     @Given("I am on {string} homepage")
     public void openHomepage(String searchEngine) {
-        driver=WebDriverManager.getInstance("chrome").getDriver();
+        driver= WebDriverManager.getInstance("chrome").getDriver();
         driver.manage().window().maximize();
         if (searchEngine.equalsIgnoreCase("Google")) {
             driver.get("https://www.google.com/");

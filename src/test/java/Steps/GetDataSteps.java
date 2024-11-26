@@ -6,10 +6,10 @@ import io.cucumber.java.en.Then;
 
 import static org.testng.Assert.assertEquals;
 
-public class Step2 {
+public class GetDataSteps {
     private final SharedStateBetweenSteps sharedStateBetweenSteps;
 
-    public Step2(SharedStateBetweenSteps sharedStateBetweenSteps) {
+    public GetDataSteps(SharedStateBetweenSteps sharedStateBetweenSteps) {
         this.sharedStateBetweenSteps = sharedStateBetweenSteps;
     }
 

@@ -4,10 +4,10 @@ import TestContext.SharedStateBetweenScenario;
 import TestContext.SharedStateBetweenSteps;
 import io.cucumber.java.en.Given;
 
-public class Step1 {
+public class SetDataSteps {
     private final SharedStateBetweenSteps sharedStateBetweenSteps;
 
-    public Step1(SharedStateBetweenSteps sharedStateBetweenSteps) {
+    public SetDataSteps(SharedStateBetweenSteps sharedStateBetweenSteps) {
         this.sharedStateBetweenSteps = sharedStateBetweenSteps;
     }
 
