@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.saurav</groupId>
-    <artifactId>ParallelRun_DI</artifactId>
+    <artifactId>DesignPattern</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>CucumberParallelRun</name>
+    <name>DesignPattern</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -48,6 +48,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.36</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

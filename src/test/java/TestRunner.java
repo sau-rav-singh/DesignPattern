@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/java/",
         glue = "Steps",
-        //tags = "@DI or @Parallel"
+        //tags = "@Parallel"
         tags = "@DI"
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
