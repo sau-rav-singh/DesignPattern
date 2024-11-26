@@ -1,4 +1,4 @@
-package Steps;
+package StepDefinition;
 
 import TestContext.SharedStateBetweenScenario;
 import TestContext.SharedStateBetweenSteps;

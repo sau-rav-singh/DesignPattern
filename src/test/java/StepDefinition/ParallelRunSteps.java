@@ -1,4 +1,4 @@
-package Steps;
+package StepDefinition;
 
 import Utils.WebDriverManager;
 import io.cucumber.java.en.Given;
