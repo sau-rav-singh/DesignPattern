@@ -1,19 +1,29 @@
 package RahulDP.Tests;
 
 import RahulDP.PageComponents.FooterNavigation;
-import RahulDP.PageComponents.MultiTrip;
 import RahulDP.PageComponents.NavigationBar;
 import RahulDP.PageObjects.TravelHomePage;
+import RahulDP.data.DataProviders;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class FooterTest {
-    @Test
-    public void flightTest() {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        TravelHomePage travelHomePage = new TravelHomePage(driver);
+import java.util.HashMap;
+
+public class FooterTest extends BaseTest {
+    TravelHomePage travelHomePage;
+    WebDriver driver;
+
+    @BeforeTest
+    public void setup() {
+        driver = startDriver();
+        travelHomePage = new TravelHomePage(driver);
+
+    }
+
+    @Test(dataProvider = "flights", dataProviderClass = DataProviders.class)
+    public void flightTest(HashMap<String, String> reservationDetails) {
         travelHomePage.goTo();
         FooterNavigation footer = travelHomePage.getFooterBar();
         footer.getFlightAttribute();
@@ -21,10 +31,13 @@ public class FooterTest {
         NavigationBar navBar = travelHomePage.getNavigationBar();
         navBar.getFlightAttribute();
         navBar.getLinkCount();
-        //travelHomePage.setBookingStrategy(new RoundTrip(driver));
-        //travelHomePage.setBookingStrategy("multiTrip");
-        travelHomePage.setBookingStrategy("roundTrip");
-        travelHomePage.checkAvailability("PNQ", "HYD");
-       // driver.close();
+        travelHomePage.setBookingStrategy("multiTrip");
+        travelHomePage.checkAvailability(reservationDetails);
+    }
+
+    @AfterTest
+    public void tearDown() {
+        if (driver != null)
+            driver.quit();
     }
 }

@@ -27,10 +27,8 @@ public class MultiTrip implements SearchFlightAvail {
     public void checkAvail(HashMap<String, String> reservationDetails) {
         makeStateReady(s -> selectOriginCity(reservationDetails.get("origin")));
         selectDestinationCity(reservationDetails.get("destination"));
-        //selectDestinationCity2(reservationDetails.get("destination2"));
-        selectDestinationCity2("BLR");
+        selectDestinationCity2(reservationDetails.get("destination2"));
     }
-
 
     public void selectOriginCity(String origin) {
         driver.findElement(from).click();
@@ -48,12 +46,10 @@ public class MultiTrip implements SearchFlightAvail {
     }
 
     public void makeStateReady(Consumer<MultiTrip> consumer) {
-        System.out.println("I am inside Multi trip ");
         driver.findElement(multiCity_rdo).click();
         driver.findElement(modalPopUp).click();
         waitForElementToDisappear(modalPopUp);
         consumer.accept(this);
-        System.out.println("am done");
     }
 
     public void waitForElementToDisappear(By findBy) {

@@ -37,11 +37,7 @@ public class TravelHomePage {
         searchFlightAvail=strategyFactory.createStrategy(tripType);
     }
 
-    public void checkAvailability(String origin, String destination) {
-
-        HashMap<String, String> travalMap = new HashMap<>();
-        travalMap.put("origin", origin);
-        travalMap.put("destination", destination);
-        searchFlightAvail.checkAvail(travalMap);
+    public void checkAvailability(HashMap<String, String> reservationDetails) {
+        searchFlightAvail.checkAvail(reservationDetails);
     }
 }
