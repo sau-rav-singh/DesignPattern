@@ -1,9 +1,9 @@
-package RahulDP.Tests;
+package RahulDP.Utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class BaseTest {
+public class TestBase {
 
     public WebDriver startDriver() {
         WebDriver driver = new ChromeDriver();

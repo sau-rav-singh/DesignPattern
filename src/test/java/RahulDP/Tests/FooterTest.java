@@ -3,6 +3,7 @@ package RahulDP.Tests;
 import RahulDP.PageComponents.FooterNavigation;
 import RahulDP.PageComponents.NavigationBar;
 import RahulDP.PageObjects.TravelHomePage;
+import RahulDP.Utilities.TestBase;
 import RahulDP.data.DataProviders;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.HashMap;
 
-public class FooterTest extends BaseTest {
+public class FooterTest extends TestBase {
     TravelHomePage travelHomePage;
     WebDriver driver;
 
