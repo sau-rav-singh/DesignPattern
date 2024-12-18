@@ -27,7 +27,7 @@ public class ParallelRunSteps {
     public void getPageTitle() throws InterruptedException {
         String title = driver.getTitle();
         System.out.println("Page Title: " + title);
-        Thread.sleep(1000);
+        Thread.sleep(5000);
     }
 
     @Then("the title should be {string}")
