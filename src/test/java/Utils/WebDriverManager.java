@@ -7,57 +7,32 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverManager {
 
-    private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
-    private static volatile WebDriverManager instance;
+    private static final ThreadLocal<WebDriver> tlDriver = ThreadLocal.withInitial(() -> null);
 
-    private WebDriverManager() {
-    }
-
-    public static WebDriverManager getInstance(String browser) {//Double-Checked Locking (DCL)
-        if (instance == null) {
-            synchronized (WebDriverManager.class) {
-                if (instance == null) {
-                    instance = new WebDriverManager();
-                }
-            }
-        }
+    public static void initDriver(String browser) {
         if (tlDriver.get() == null) {
-            instance.initDriver(browser);
-        }
-        return instance;
-    }
-
-    public static void main(String[] args) {
-        WebDriver driver = WebDriverManager.getInstance("chrome").getDriver();
-        driver.manage().window().maximize();
-        driver.get("https://google.com");
-        System.out.println(driver.getTitle());
-        WebDriverManager.quitBrowser();
-    }
-
-    public void initDriver(String browser) {
-        switch (browser.toLowerCase()) {
-            case "chrome":
-                tlDriver.set(new ChromeDriver());
-                break;
-            case "firefox":
-                tlDriver.set(new FirefoxDriver());
-                break;
-            case "edge":
-                tlDriver.set(new EdgeDriver());
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
+            WebDriver driver = switch (browser.toLowerCase()) {
+                case "chrome" -> new ChromeDriver();
+                case "firefox" -> new FirefoxDriver();
+                case "edge" -> new EdgeDriver();
+                default -> throw new IllegalArgumentException("Unsupported browser: " + browser);
+            };
+            tlDriver.set(driver);
         }
     }
 
-    public WebDriver getDriver() {
-        return tlDriver.get();
+    public static WebDriver getDriver() {
+        WebDriver driver = tlDriver.get();
+        if (driver == null) {
+            throw new IllegalStateException("Driver is not initialized. Call initDriver() first.");
+        }
+        return driver;
     }
 
     public static void quitBrowser() {
-        if (tlDriver.get() != null) {
-            tlDriver.get().quit();
+        WebDriver driver = tlDriver.get();
+        if (driver != null) {
+            driver.quit();
             tlDriver.remove();
         }
     }
